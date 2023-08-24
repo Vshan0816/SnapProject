@@ -28,12 +28,12 @@ https://wireframe.cc/pro/edit/676786
 
 Canvas API
 
-Implementation Timeline
-Thursday - Brainstorming/organization/create classes and associations/ individual cards
-Friday - Create board/ start game logic
-Weekend - fleshing out game logic and bug fixing
-Monday - AI logic, styling and debugging, figuring out the rest
-Tuesday - styling and debugging, 
-Wednesday - wrapping up
+Implementation Timeline  
+Thursday - Brainstorming/organization/create classes and associations/ individual cards  
+Friday - Create board/ start game logic  
+Weekend - fleshing out game logic and bug fixing  
+Monday - AI logic, styling and debugging, figuring out the rest  
+Tuesday - styling and debugging,  
+Wednesday - wrapping up  
 
 
