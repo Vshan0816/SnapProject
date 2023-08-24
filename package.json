@@ -1,0 +1,37 @@
+{
+  "name": "javascriptproject",
+  "version": "1.0.0",
+  "description": "Snap will be a miniature iteration of the digital card game Marvel Snap where you as the player will face against the AI. Both you and the AI will have a prebuilt deck. The goal of the game is to win 2 out of 3 lanes/locations by having more total power than your opponent in the respective lanes. In the event of a tie, the player with the highest total power wins. There are 6 turns in total, and each player gains 1 mana per turn. Each player has a Deck of 12, they start with a hand of 3, and draw one card per turn. Both players decide which cards to place each turn, and the lane and the cards played is revealed to both players at the end of the turn. This loop repeats until the end of turn 6, or until a player retreats. Players can retreat early and only lose the initial base value of points wagered or the ante. They can also each snap once to double the amount of points wagered. After the final turn, the points wagered will also be doubled.",
+  "main": "index.js",
+  "browserslist": [
+    "defaults"
+  ],
+  "scripts": {
+    "watch": "webpack --watch --mode=development",
+    "build": "webpack --mode=production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vshan0816/SnapProject.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Vshan0816/SnapProject/issues"
+  },
+  "homepage": "https://github.com/Vshan0816/SnapProject#readme",
+  "dependencies": {
+    "@babel/core": "^7.22.11",
+    "@babel/preset-env": "^7.22.10",
+    "babel-loader": "^9.1.3",
+    "core-js": "^3.32.1",
+    "css-loader": "^6.8.1",
+    "mini-css-extract-plugin": "^2.7.6",
+    "regenerator-runtime": "^0.14.0",
+    "sass": "^1.66.1",
+    "sass-loader": "^13.3.2",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4"
+  }
+}
