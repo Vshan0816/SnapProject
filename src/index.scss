@@ -15,7 +15,6 @@
     width: 800px;
     height: 600px;
     background-color: beige;
-    z-index: -1; /* Place it behind other content */
     display: grid;
     grid-template-columns: 20% 20% 20% 20% 20%;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
@@ -70,13 +69,6 @@
     padding: 10px;
 }
   
-.display {
-    border: 4px solid $color;
-    width: 400px;
-    height: 600px;
-    background-color: beige;
-}
-
 #playerLane1{
     border: 4px solid $color;
     width: 150px;
@@ -128,17 +120,7 @@
     height: 125px;
 }
 
-.mainDiv2 {
-        display: flex;
-        justify-content: center;
-}
-.hand {
-    
-    margin-top: 20px;
-    border: 4px solid $color;
-    height: 150px;
-    width: 80%;
-}
+
 
 #location1 {
     border: 4px solid $color;
@@ -173,4 +155,52 @@
     border: 4px solid $color;
     height: 50px;
     width: 50px;
+}
+
+.display {
+    border: 4px solid $color;
+    width: 400px;
+    height: 600px;
+    background-color: beige;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    position: relative
+}
+
+#startGame {
+    margin-bottom: 50px;
+    width: 200px;
+    height: 25px;
+    border: 4px solid $color;
+    text-align: center;
+
+}
+
+.mainDiv2 {
+    display: flex;
+    justify-content: center;
+}
+.hand {
+
+    margin-top: 20px;
+    border: 4px solid $color;
+    height: 150px;
+    width: 80%;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    overflow: hidden;
+}
+
+.selected {
+    border: 3px solid blue;
+  }
+
+#endTurn{
+    margin-bottom: 50px;
+    width: 200px;
+    height: 25px;
+    border: 4px solid $color;
+    text-align: center;
 }
