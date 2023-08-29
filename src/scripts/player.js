@@ -68,7 +68,7 @@ class Player {
             } 
     }
 
-    aiInitialDraw(){
+    aIInitialDraw(){
         for (let i = 0; i < 4; i++) {
             this.aIDraw()
         }

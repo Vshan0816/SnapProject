@@ -31,24 +31,39 @@ class Game {
       this.roundDiv = document.querySelector("#round")
       this.roundDiv.innerHTML = `Round: ${this.round}`
 
-      this.enemyLane1 = 
+      this.enemyLane1 = document.querySelector("#enemyLane1")
+      this.enemyLane2 = document.querySelector("#enemyLane2")
+      this.enemyLane3 = document.querySelector("#enemyLane3")
 
+      this.aIPower1Div = document.querySelector("#enemyPowerLane1")
+      this.aIPower1Div.innerHTML = this.aI.lane1Power
+      this.aIPower2Div = document.querySelector("#enemyPowerLane2")
+      this.aIPower2Div.innerHTML = this.aI.lane2Power
+      this.aIPower3Div = document.querySelector("#enemyPowerLane3")
+      this.aIPower3Div.innerHTML = this.aI.lane3Power
     }
+
+    
   
     handleEndTurn() {
       this.player.draw();
+      this.aI.aIDraw();
       this.round += 1
       this.roundDiv.innerHTML = `Round: ${this.round}`
       this.player.mana = this.round
+      this.handleAI()
+      this.aI.mana = this.round
       this.manaDiv.innerHTML = `Mana: ${this.player.mana}`
-      // handleAI()
+      
     }
   
     handleStart() {
       if (this.round === 0){
         this.player.initialDraw();
+        this.aI.aIInitialDraw();
         this.player.mana += 1
         this.manaDiv.innerHTML = `Mana: ${this.player.mana}`
+        this.aI.mana += 1
         this.round += 1
         this.roundDiv.innerHTML = `Round: ${this.round}`
       }
@@ -116,8 +131,7 @@ class Game {
             this.player.selectedCard = null
           }
         }
-
-    }
+      }
       handlePlaceCard3(){
         let hand = this.player.hand
         let filter = hand.filter((card) => card.name === this.player.selectedCard)
@@ -145,8 +159,8 @@ class Game {
             this.player.selectedCard = null
           }
         }
+      }
 
-    }
       handleAI(){
         // while current mana is <= the least mana of the card 
         let hand = this.aI.hand
@@ -155,9 +169,61 @@ class Game {
         let filter = hand.filter((card) => card.mana === min)
         while (this.aI.mana >= min){
           let randomNumber = Math.ceil(Math.random() * 3)
-
+          // let randomNumber = 1
           if (randomNumber === 1) {
-            
+            if (this.enemyLane1.childElementCount < 4 && this.aI.mana >= filter[0].mana){
+              let newCardDiv = document.createElement('div')
+              let newImage = document.createElement('img')
+              newImage.src = filter[0].imageUrl
+              newImage.height = 50
+              newCardDiv.appendChild(newImage)
+              this.enemyLane1.appendChild(newCardDiv)
+
+
+              this.aI.lane1Power += filter[0].power
+              this.aIPower1Div.innerHTML = this.aI.lane1Power
+
+              this.aI.mana -= filter[0].mana
+
+              let index = hand.findIndex(card => card.mana === min)
+              hand.splice(index, 1)
+            } 
+          } else if (randomNumber === 2) {
+            if (this.enemyLane2.childElementCount < 4 && this.aI.mana >= filter[0].mana){
+              let newCardDiv = document.createElement('div')
+              let newImage = document.createElement('img')
+              newImage.src = filter[0].imageUrl
+              newImage.height = 50
+              newCardDiv.appendChild(newImage)
+              this.enemyLane2.appendChild(newCardDiv)
+
+
+              this.aI.lane2Power += filter[0].power
+              this.aIPower2Div.innerHTML = this.aI.lane2Power
+
+              this.aI.mana -= filter[0].mana
+
+              let index = hand.findIndex(card => card.mana === min)
+              hand.splice(index, 1)
+            } 
+          } else {
+            if (this.enemyLane3.childElementCount < 4 && this.aI.mana >= filter[0].mana){
+              let newCardDiv = document.createElement('div')
+              let newImage = document.createElement('img')
+              newImage.src = filter[0].imageUrl
+              newImage.height = 50
+              newCardDiv.appendChild(newImage)
+              this.enemyLane3.appendChild(newCardDiv)
+
+
+              this.aI.lane3Power += filter[0].power
+              this.aIPower3Div.innerHTML = this.aI.lane3Power
+
+              this.aI.mana -= filter[0].mana
+
+              let index = hand.findIndex(card => card.mana === min)
+              hand.splice(index, 1)
+            } 
           }
         } 
         // roll 
