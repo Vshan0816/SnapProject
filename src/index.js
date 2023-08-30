@@ -1,4 +1,4 @@
-import Example from "./scripts/example";
+
 import Deck from "./scripts/deck.js";
 import Game from "./scripts/game"
 
