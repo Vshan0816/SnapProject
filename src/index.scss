@@ -74,8 +74,10 @@
     grid-column: 1 / span 5;
     grid-row: 12 / span 1;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     padding: 10px;
+    // display: grid;
+    // grid-template-columns: 20% 20% 20% 20% 20%;
 }
   
 #playerLane1{
@@ -240,9 +242,21 @@
   }
 
 #endTurn{
-    margin-bottom: 50px;
+    grid-column: 5/span 1;
     width: 125px;
     height: 25px;
     border: 4px solid $color;
+    text-align: center;
+}
+
+#mana{
+    margin-top: 6px;
+    grid-column: 3/span 1;
+    text-align: center;
+}
+
+#round {
+    margin-top: 6px;
+    grid-column: 1/span 1;
     text-align: center;
 }
