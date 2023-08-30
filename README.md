@@ -51,4 +51,5 @@ JavascriptProject/
 ├─ webpack.config.js
 └── README.md
 
-
+##Card Artwork From
+https://marvelsnap.io/card-database/
