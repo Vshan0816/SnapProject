@@ -41,12 +41,15 @@ class Game {
       this.aIPower2Div.innerHTML = this.aI.lane2Power
       this.aIPower3Div = document.querySelector("#enemyPowerLane3")
       this.aIPower3Div.innerHTML = this.aI.lane3Power
+
+      this.gameEnd = document.querySelector("#gameEnd")
+      this.aIPower3Div.innerHTML = 0
     }
 
     
   
     handleEndTurn() {
-      if (this.round <7){
+      if (this.round <7 && this.round >= 1){
         this.player.draw();
         this.aI.aIDraw();
         this.round += 1
@@ -275,10 +278,13 @@ class Game {
         
         if (this.player.points > this.aI.points)
           {
+            this.gameEnd.innerHTML = "You Win"
             console.log("You Win")
           } else if (this.player.points < this.aI.points) {
             console.log("You Lose")
+            this.gameEnd.innerHTML = "You Lose"
           } else {
+            this.gameEnd.innerHTML = "tie"
             console.log("Tie")
           }
       }

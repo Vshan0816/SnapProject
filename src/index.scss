@@ -17,7 +17,7 @@
     background-color: beige;
     display: grid;
     grid-template-columns: 20% 20% 20% 20% 20%;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 8.33% 8.33% 8.33% 8.33% 8.33% 8.33% 8.33% 8.33% 8.33% 8.33% 8.33% 8.33%;
     position: relative;
 }
 
@@ -183,9 +183,22 @@
     height: 600px;
     background-color: beige;
     display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    position: relative
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    
+}
+
+#gameEnd {
+    margin-bottom: 50px;
+    width: 200px;
+    height: 25px;
+    border: 4px solid $color;
+    text-align: center;
+}
+
+#instructions {
+    text-align: center;
 }
 
 #startGame {
@@ -219,7 +232,7 @@
 
 #endTurn{
     margin-bottom: 50px;
-    width: 150px;
+    width: 125px;
     height: 25px;
     border: 4px solid $color;
     text-align: center;
