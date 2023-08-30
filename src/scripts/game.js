@@ -46,15 +46,19 @@ class Game {
     
   
     handleEndTurn() {
-      this.player.draw();
-      this.aI.aIDraw();
-      this.round += 1
-      this.roundDiv.innerHTML = `Round: ${this.round}`
-      this.player.mana = this.round
-      this.handleAI()
-      this.aI.mana = this.round
-      this.manaDiv.innerHTML = `Mana: ${this.player.mana}`
-      
+      if (this.round <7){
+        this.player.draw();
+        this.aI.aIDraw();
+        this.round += 1
+        this.roundDiv.innerHTML = `Round: ${this.round}`
+        this.player.mana = this.round
+        this.handleAI()
+        this.aI.mana = this.round
+        this.manaDiv.innerHTML = `Mana: ${this.player.mana}`
+        if (this.round === 7) {
+          this.endGame()
+        }
+      }
     }
   
     handleStart() {
@@ -167,10 +171,19 @@ class Game {
         let map = hand.map(num => num = num.mana)
         let min = Math.min(...map)
         let filter = hand.filter((card) => card.mana === min)
+        let randomNumber = 0
         while (this.aI.mana >= min){
-          let randomNumber = Math.ceil(Math.random() * 3)
+            hand = this.aI.hand
+            map = hand.map(num => num = num.mana)
+            min = Math.min(...map)
+            filter = hand.filter((card) => card.mana === min)
+            randomNumber = Math.ceil(Math.random() * 3);
           // let randomNumber = 1
           if (randomNumber === 1) {
+              hand = this.aI.hand
+              map = hand.map(num => num = num.mana)
+              min = Math.min(...map)
+              filter = hand.filter((card) => card.mana === min)
             if (this.enemyLane1.childElementCount < 4 && this.aI.mana >= filter[0].mana){
               let newCardDiv = document.createElement('div')
               let newImage = document.createElement('img')
@@ -185,11 +198,16 @@ class Game {
 
               this.aI.mana -= filter[0].mana
 
-              let index = hand.findIndex(card => card.mana === min)
+              let index = hand.findIndex(card => card === filter[0])
               hand.splice(index, 1)
             } 
           } else if (randomNumber === 2) {
+              hand = this.aI.hand
+              map = hand.map(num => num = num.mana)
+              min = Math.min(...map)
+              filter = hand.filter((card) => card.mana === min)
             if (this.enemyLane2.childElementCount < 4 && this.aI.mana >= filter[0].mana){
+              console.log("randomNumber2")
               let newCardDiv = document.createElement('div')
               let newImage = document.createElement('img')
               newImage.src = filter[0].imageUrl
@@ -203,11 +221,16 @@ class Game {
 
               this.aI.mana -= filter[0].mana
 
-              let index = hand.findIndex(card => card.mana === min)
+              let index = hand.findIndex(card => card === filter[0])
               hand.splice(index, 1)
             } 
           } else {
+            hand = this.aI.hand
+            map = hand.map(num => num = num.mana)
+            min = Math.min(...map)
+            filter = hand.filter((card) => card.mana === min)
             if (this.enemyLane3.childElementCount < 4 && this.aI.mana >= filter[0].mana){
+              console.log("randomNumber3")
               let newCardDiv = document.createElement('div')
               let newImage = document.createElement('img')
               newImage.src = filter[0].imageUrl
@@ -221,12 +244,43 @@ class Game {
 
               this.aI.mana -= filter[0].mana
 
-              let index = hand.findIndex(card => card.mana === min)
+              let index = hand.findIndex(card => card === filter[0])
               hand.splice(index, 1)
             } 
           }
         } 
         // roll 
+      }
+
+      endGame(){
+        this.roundDiv.innerHTML = "Game Complete"
+        if (this.player.lane1Power > this.aI.lane1Power){
+          this.player.points += 1
+        }
+        if (this.player.lane2Power > this.aI.lane2Power){
+          this.player.points += 1
+        }
+        if (this.player.lane3Power > this.aI.lane3Power){
+          this.player.points += 1
+        }
+        if (this.player.lane1Power < this.aI.lane1Power){
+          this.aI.points += 1
+        }
+        if (this.player.lane2Power < this.aI.lane2Power){
+          this.aI.points += 1
+        }
+        if (this.player.lane3Power < this.aI.lane3Power){
+          this.aI.points += 1
+        }
+        
+        if (this.player.points > this.aI.points)
+          {
+            console.log("You Win")
+          } else if (this.player.points < this.aI.points) {
+            console.log("You Lose")
+          } else {
+            console.log("Tie")
+          }
       }
   }
 

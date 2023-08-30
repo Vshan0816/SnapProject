@@ -10,7 +10,7 @@ class Player {
         this.lane1Power = 0
         this.lane2Power = 0
         this.lane3Power = 0
-        this.totalHandMana = 0
+        this.points = 0
     }
 
     initialDraw(){
