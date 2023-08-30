@@ -30,6 +30,7 @@ Javascript + Browser + HTML
 -   possibly add abilities to specific cards
 -   improve styling
 -   refactor code for organization
+-   add reset game option
 
 ##File Structure
 JavascriptProject/
